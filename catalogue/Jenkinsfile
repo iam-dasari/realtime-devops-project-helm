@@ -14,8 +14,8 @@ pipeline {
         stage("Checkout") {
             //dir('catalogue') {
             steps {
-                dir('catalogue') {
-                    checkout.gitCheckout(branchMap)
+                checkout()
+
                 }
                 
             }
