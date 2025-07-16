@@ -1,6 +1,6 @@
 #!/groovy
 
-@Library('') _
+@Library('jenkins-shared-library') _
 
 pipeline {
     agent { node { label 'AGENT-1'} }
