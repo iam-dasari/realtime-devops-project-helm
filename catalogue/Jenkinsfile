@@ -2,18 +2,25 @@
 
 @Library('jenkins-shared-library') _
 
+def branchMap = [
+    branch: "main", // we are migrating monolithic to Microservice
+    url: "https://github.com/iam-dasari/realtime-devops-project-helm.git"
+]
 
 pipeline {
     agent { node { label 'AGENT-1'} }
 
     stages {
         stage("Checkout") {
-            //dir('catalogue') {
             steps {
                 javaEKS()
+                checkout scm
 
-                }
+                    //javaEKS.gitCheckout(branchMap)
+
                 
-            }
+            }                
+
         }
+    }
 }
