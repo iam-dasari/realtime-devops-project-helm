@@ -2,6 +2,11 @@
 
 @Library('jenkins-shared-library') _
 
+def branchMap = [
+    branch: "main", // we are migrating monolithic to Microservice
+    url: "https://github.com/iam-dasari/realtime-devops-project-helm.git"
+]
+
 pipeline {
     agent { node { label 'AGENT-1'} }
 
@@ -9,13 +14,14 @@ pipeline {
         COMPONENT = "catalogue"
         BRANCH = "main"
         URL = "https://github.com/iam-dasari/realtime-devops-project-helm.git"
+        
     }
 
     stages {
         stage('Checkout') {
             dir(${COMPONENT}) {
                 echo "${COMPONENT}"
-                checkout(${BRANCH},${URL})
+                checkout(branchMap)
             }
         }
     }
