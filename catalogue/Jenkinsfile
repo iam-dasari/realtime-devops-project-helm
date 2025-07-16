@@ -10,19 +10,11 @@ def branchMap = [
 pipeline {
     agent { node { label 'AGENT-1'} }
 
-    environment {
-        COMPONENT = "catalogue"
-        BRANCH = "main"
-        URL = "https://github.com/iam-dasari/realtime-devops-project-helm.git"
-        
-    }
-
     stages {
         stage('Checkout') {
-            dir(${COMPONENT}) {
-                echo "${COMPONENT}"
+            //dir('catalogue') {
                 checkout(branchMap)
-            }
+            //}
         }
     }
 }
